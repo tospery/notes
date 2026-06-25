@@ -50,7 +50,6 @@ val ComposeButtonSample = Sample(
 @Composable  
 private fun ComposeButtonSampleContent() {  
     val onLog = LocalSampleLogger.current  
-  
     LazyColumn(  
         modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(16.dp)  
     ) {  
@@ -73,43 +72,38 @@ private fun ButtonVariantsCard(
             modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)  
         ) {  
             Text(  
-                text = "常见按钮类型", style = MaterialTheme.typography.titleLarge  
+                text = "常见按钮类型",  
+                style = MaterialTheme.typography.titleLarge  
             )  
-  
             Text(  
                 text = "Material3 提供不同强调层级的按钮，用于不同优先级的动作。",  
                 style = MaterialTheme.typography.bodyMedium,  
                 color = MaterialTheme.colorScheme.onSurfaceVariant  
             )  
-  
             Button(  
                 onClick = {  
                     onLog("Compose Button组件: 点击 Button")  
                 }) {  
                 Text(text = "Button")  
             }  
-  
             FilledTonalButton(  
                 onClick = {  
                     onLog("Compose Button组件: 点击 FilledTonalButton")  
                 }) {  
                 Text(text = "FilledTonalButton")  
             }  
-  
             ElevatedButton(  
                 onClick = {  
                     onLog("Compose Button组件: 点击 ElevatedButton")  
                 }) {  
                 Text(text = "ElevatedButton")  
             }  
-  
             OutlinedButton(  
                 onClick = {  
                     onLog("Compose Button组件: 点击 OutlinedButton")  
                 }) {  
                 Text(text = "OutlinedButton")  
             }  
-  
             TextButton(  
                 onClick = {  
                     onLog("Compose Button组件: 点击 TextButton")  
@@ -138,7 +132,6 @@ private fun IconButtonContentCard(
                 style = MaterialTheme.typography.bodyMedium,  
                 color = MaterialTheme.colorScheme.onSurfaceVariant  
             )  
-  
             Row(  
                 horizontalArrangement = Arrangement.spacedBy(12.dp),  
                 verticalAlignment = Alignment.CenterVertically  
@@ -153,7 +146,6 @@ private fun IconButtonContentCard(
                     )  
                     Text(text = "添加")  
                 }  
-  
                 OutlinedButton(  
                     onClick = {  
                         onLog("Compose Button组件: 点击刷新按钮")  
@@ -174,15 +166,16 @@ private fun ButtonStateCard(
 ) {  
     var count by remember { mutableIntStateOf(0) }  
     val canSubmit = count >= 3  
-  
     ElevatedCard(  
         modifier = Modifier.fillMaxWidth()  
     ) {  
         Column(  
-            modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)  
+            modifier = Modifier.padding(20.dp),  
+            verticalArrangement = Arrangement.spacedBy(14.dp)  
         ) {  
             Text(  
-                text = "启用与禁用状态", style = MaterialTheme.typography.titleLarge  
+                text = "启用与禁用状态",  
+                style = MaterialTheme.typography.titleLarge  
             )  
             Text(  
                 text = "enabled=false 会禁用点击、涟漪和语义动作，适合表达暂时不可用。",  
@@ -190,9 +183,9 @@ private fun ButtonStateCard(
                 color = MaterialTheme.colorScheme.onSurfaceVariant  
             )  
             Text(  
-                text = "当前进度: $count / 3", style = MaterialTheme.typography.bodyLarge  
+                text = "当前进度: $count / 3",  
+                style = MaterialTheme.typography.bodyLarge  
             )  
-  
             Row(  
                 horizontalArrangement = Arrangement.spacedBy(12.dp),  
                 verticalAlignment = Alignment.CenterVertically  
@@ -205,7 +198,6 @@ private fun ButtonStateCard(
                 ) {  
                     Text(text = "增加进度")  
                 }  
-  
                 Button(  
                     onClick = {  
                         onLog("Compose Button组件: 提交成功")  
@@ -213,7 +205,6 @@ private fun ButtonStateCard(
                 ) {  
                     Text(text = "提交")  
                 }  
-  
                 TextButton(  
                     onClick = {  
                         count = 0  
@@ -231,27 +222,29 @@ private fun LoadingButtonCard(
     onLog: (String) -> Unit  
 ) {  
     var loading by remember { mutableStateOf(false) }  
-  
     ElevatedCard(  
         modifier = Modifier.fillMaxWidth()  
     ) {  
         Column(  
-            modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)  
+            modifier = Modifier.padding(20.dp),  
+            verticalArrangement = Arrangement.spacedBy(14.dp)  
         ) {  
             Text(  
-                text = "加载态按钮", style = MaterialTheme.typography.titleLarge  
+                text = "加载态按钮",  
+                style = MaterialTheme.typography.titleLarge  
             )  
             Text(  
                 text = "加载时通常禁用按钮，并在内容区域展示进度反馈。",  
                 style = MaterialTheme.typography.bodyMedium,  
                 color = MaterialTheme.colorScheme.onSurfaceVariant  
             )  
-  
             Button(  
                 onClick = {  
                     loading = true  
                     onLog("Compose Button组件: 开始加载")  
-                }, modifier = Modifier.fillMaxWidth(), enabled = !loading  
+                },  
+                modifier = Modifier.fillMaxWidth(),  
+                enabled = !loading  
             ) {  
                 if (loading) {  
                     CircularProgressIndicator(  
@@ -262,12 +255,12 @@ private fun LoadingButtonCard(
                     Text(text = "加载中")  
                 } else {  
                     Icon(  
-                        imageVector = Icons.Default.CheckCircle, contentDescription = null  
+                        imageVector = Icons.Default.CheckCircle,  
+                        contentDescription = null  
                     )  
                     Text(text = "开始请求")  
                 }  
             }  
-  
             OutlinedButton(  
                 onClick = {  
                     loading = false  
@@ -288,17 +281,18 @@ private fun ButtonStyleCard(
         modifier = Modifier.fillMaxWidth()  
     ) {  
         Column(  
-            modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)  
+            modifier = Modifier.padding(20.dp),  
+            verticalArrangement = Arrangement.spacedBy(14.dp)  
         ) {  
             Text(  
-                text = "样式定制", style = MaterialTheme.typography.titleLarge  
+                text = "样式定制",  
+                style = MaterialTheme.typography.titleLarge  
             )  
             Text(  
                 text = "通过 colors、shape、contentPadding 等参数微调按钮外观。",  
                 style = MaterialTheme.typography.bodyMedium,  
                 color = MaterialTheme.colorScheme.onSurfaceVariant  
             )  
-  
             Button(  
                 onClick = {  
                     onLog("Compose Button组件: 点击圆角强调按钮")  
@@ -309,7 +303,6 @@ private fun ButtonStyleCard(
             ) {  
                 Text(text = "圆角强调")  
             }  
-  
             OutlinedButton(  
                 onClick = {  
                     onLog("Compose Button组件: 点击宽间距按钮")  
@@ -326,3 +319,4 @@ private fun ButtonStyleCard(
     }  
 }
 ```
+
